@@ -32,7 +32,8 @@ export class ExpireMap<K, V> {
 
     // if duplicate keys returns the index of the first one
     private _findIndexFirst(timestamp: number): number {
-        let low = 0, high = this._expireTimes.length;
+        let low = 0;
+        let high = this._expireTimes.length;
         while(low < high){
             const mid = Math.floor((low + high) / 2);
             const cmp = timestamp - (this._expireTimes[mid] as number);
@@ -47,7 +48,8 @@ export class ExpireMap<K, V> {
 
     // if duplicate keys returns the index of the last one
     private _findIndexLast(timestamp: number): number {
-        let low = 0, high = this._expireTimes.length;
+        let low = 0;
+        let high = this._expireTimes.length;
         while(low < high){
             const mid = Math.floor((low + high) / 2);
             const cmp = timestamp - (this._expireTimes[mid] as number);

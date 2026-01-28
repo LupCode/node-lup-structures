@@ -269,9 +269,7 @@ describe('Testing ExpireMap', () => {
 
     await sleep(25);
 
-    console.log(map.toDebugString()); // TODO REMOVE
     map.get("a"); // should reset lifespan of elements
-    console.log(map.toDebugString()); // TODO REMOVE
     map.get("c"); // should reset lifespan of elements
     expect(map.getRemainingLifespan("a")).toBeLessThanOrEqual(50);
     expect(map.getRemainingLifespan("a")).toBeGreaterThan(25);

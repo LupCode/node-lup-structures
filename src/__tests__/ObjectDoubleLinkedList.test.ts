@@ -997,7 +997,6 @@ describe('Testing LinkedList', () => {
     ]);
 
     const resultA = listA.splice(0, 2, new TestEntry(1));
-    console.log(resultA, listA.toDebugString()); // TODO REMOVE
     expect(listA.length).toBe(1);
     expect(listA.at(0)?.value).toBe(1);
     expect(listA.at(1)).toBeUndefined();

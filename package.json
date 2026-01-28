@@ -9,6 +9,7 @@
     ".": "./lib/index.js",
     "./ExpireMap": "./lib/ExpireMap.js",
     "./HashMap": "./lib/HashMap.js",
+    "./ObjectDoubleLinkedList": "./lib/ObjectDoubleLinkedList.js",
     "./ObjectLinkedList": "./lib/ObjectLinkedList.js",
     "./SortedMap": "./lib/SortedMap.js"
   },

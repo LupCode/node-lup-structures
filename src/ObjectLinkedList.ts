@@ -565,13 +565,13 @@ export class ObjectLinkedList<T extends LinkedListComparator<T>> {
 
         // special case for head
         if(this._head.value.equals(lookup)){
-            const value = this._head.value;
+            const oldValue = this._head.value;
             this._head = this._head.next;
             if(!this._head){
                 this._tail = null;
             }
             this._size--;
-            return value;
+            return oldValue;
         }
 
         // iterate currNode.next to index
@@ -646,12 +646,12 @@ export class ObjectLinkedList<T extends LinkedListComparator<T>> {
 
         // special case for head
         if(index === 0){
-            const value = this._head.value;
+            const oldHeadValue = this._head.value;
             this._head = this._head.next;
             if(!this._head){
                 this._tail = null;
             }
-            return value;
+            return oldHeadValue;
         }
 
         // iterate currNode.next to index
@@ -661,13 +661,13 @@ export class ObjectLinkedList<T extends LinkedListComparator<T>> {
         }
 
         // currNode.next should be removed
-        const value = currNode!.next!.value;
+        const oldValue = currNode!.next!.value;
         if(!currNode!.next!.next){
             this._tail = currNode;
         }
         currNode!.next = currNode!.next!.next;
         this._size--;
-        return value;
+        return oldValue;
     }
 
     /**
@@ -845,7 +845,7 @@ export class ObjectLinkedList<T extends LinkedListComparator<T>> {
          * @param size Amount of nodes that should remain linked to head.
          * @returns New head of the second part of the split linked list.
          */
-        function split<T>(head: LinkedListNode<T> | null, size: number): LinkedListNode<T> | null {
+        function split<U>(head: LinkedListNode<U> | null, size: number): LinkedListNode<U> | null {
             let cur = head;
             for(let i = 1; cur && i < size; i++){
                 cur = cur.next;
@@ -864,11 +864,11 @@ export class ObjectLinkedList<T extends LinkedListComparator<T>> {
          * @param compare Comparison function.
          * @returns Head and tail of the new merged list.
          */
-        function merge<T>(a: LinkedListNode<T> | null, b: LinkedListNode<T> | null, compare: (x: T, y: T) => number): { head: LinkedListNode<T> | null; tail: LinkedListNode<T> | null } {
+        function merge<U>(a: LinkedListNode<U> | null, b: LinkedListNode<U> | null, compare: (x: U, y: U) => number): { head: LinkedListNode<U> | null; tail: LinkedListNode<U> | null } {
             // create new merged list
-            let head: LinkedListNode<T> | null = null;
-            let tail: LinkedListNode<T> | null = null;
-            const append = (node: LinkedListNode<T>) => {
+            let head: LinkedListNode<U> | null = null;
+            let tail: LinkedListNode<U> | null = null;
+            const append = (node: LinkedListNode<U>) => {
                 node.next = null;
                 if(tail) tail.next = node;
                 else head = node;
@@ -1012,7 +1012,7 @@ export class ObjectLinkedList<T extends LinkedListComparator<T>> {
      * @return Array containing all values in the linked list.
      */
     public toArray(): T[] {
-        const arr: Array<T> = new Array<T>(this._size);
+        const arr: T[] = new Array<T>(this._size);
         let currNode = this._head;
         for(let i=0; i < this._size; i++){
             arr[i] = currNode!.value;

@@ -33,7 +33,8 @@ export class SortedMap<K, V> {
     }
 
     private _findIndex(key: K): {index: number, alreadyExists: boolean } {
-        let low = 0, high = this.size;
+        let low = 0;
+        let high = this.size;
         while(low < high){
             const mid = Math.floor((low + high) / 2);
             const cmp = this.compare(key, this.myKeys[mid]);
@@ -215,7 +216,7 @@ export class SortedMap<K, V> {
                     const value = self.myValues[idx] as V;
                     idx++;
                     if(k < key || (inclusive && k === key))
-                        return { value: value, done: false };
+                        return { value, done: false };
                 }
                 return { value: undefined, done: true };
             },
@@ -237,7 +238,7 @@ export class SortedMap<K, V> {
                     const value = self.myValues[idx] as V;
                     idx++;
                     if(k > key || (inclusive && k === key))
-                        return { value: value, done: false };
+                        return { value, done: false };
                 }
                 return { value: undefined, done: true };
             },

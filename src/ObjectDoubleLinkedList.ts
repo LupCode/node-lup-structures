@@ -747,7 +747,7 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
 
         // special case for head
         if(index === 0){
-            const value = this._head.value;
+            const oldHeadValue = this._head.value;
             this._head = this._head.next;
             if(this._head){
                 this._head.prev = null;
@@ -755,7 +755,7 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
                 this._tail = null;
             }
             this._size--;
-            return value;
+            return oldHeadValue;
         }
 
         // iterate currNode.next to index
@@ -765,7 +765,7 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
         }
 
         // currNode.next should be removed
-        const value = currNode!.next!.value;
+        const oldValue = currNode!.next!.value;
         if(currNode!.next!.next){
             currNode!.next!.next!.prev = currNode;
         } else {
@@ -773,7 +773,7 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
         }
         currNode!.next = currNode!.next!.next;
         this._size--;
-        return value;
+        return oldValue;
     }
 
     /**
@@ -954,7 +954,7 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
          * @param size Amount of nodes that should remain linked to head.
          * @returns New head of the second part of the split linked list.
          */
-        function split<T>(head: DoubleLinkedListNode<T> | null, size: number): DoubleLinkedListNode<T> | null {
+        function split<U>(head: DoubleLinkedListNode<U> | null, size: number): DoubleLinkedListNode<U> | null {
             let cur = head;
             for(let i = 1; cur && i < size; i++){
                 cur = cur.next;
@@ -974,11 +974,11 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
          * @param compare Comparison function.
          * @returns Head and tail of the new merged list.
          */
-        function merge<T>(a: DoubleLinkedListNode<T> | null, b: DoubleLinkedListNode<T> | null, compare: (x: T, y: T) => number): { head: DoubleLinkedListNode<T> | null; tail: DoubleLinkedListNode<T> | null } {
+        function merge<U>(a: DoubleLinkedListNode<U> | null, b: DoubleLinkedListNode<U> | null, compare: (x: U, y: U) => number): { head: DoubleLinkedListNode<U> | null; tail: DoubleLinkedListNode<U> | null } {
             // create new merged list
-            let head: DoubleLinkedListNode<T> | null = null;
-            let tail: DoubleLinkedListNode<T> | null = null;
-            const append = (node: DoubleLinkedListNode<T>) => {
+            let head: DoubleLinkedListNode<U> | null = null;
+            let tail: DoubleLinkedListNode<U> | null = null;
+            const append = (node: DoubleLinkedListNode<U>) => {
                 node.prev = tail;
                 node.next = null;
                 if(tail) tail.next = node;
@@ -1131,7 +1131,7 @@ export class ObjectDoubleLinkedList<T extends LinkedListComparator<T>> {
      * @return Array containing all values in the linked list.
      */
     public toArray(): T[] {
-        const arr: Array<T> = new Array<T>(this._size);
+        const arr: T[] = new Array<T>(this._size);
         let currNode = this._head;
         for(let i=0; i < this._size; i++){
             arr[i] = currNode!.value;
