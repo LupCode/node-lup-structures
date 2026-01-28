@@ -1,0 +1,57 @@
+{
+  "name": "lup-structures",
+  "version": "0.9.0",
+  "description": "NPM Node package providing more data structures in TypeScript.",
+  "main": "./lib/index",
+  "types": "./lib/index.d.ts",
+  "files": [ "lib/**/*" ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./ExpireMap": "./lib/ExpireMap.js",
+    "./HashMap": "./lib/HashMap.js",
+    "./ObjectLinkedList": "./lib/ObjectLinkedList.js",
+    "./SortedMap": "./lib/SortedMap.js"
+  },
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LupCode/node-lup-structures.git"
+  },
+  "keywords": [
+    "node",
+    "module",
+    "TypeScript",
+    "structures",
+    "data structures",
+    "expire map",
+    "hash map",
+    "linked list"
+  ],
+  "author": "LupCode.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LupCode/node-lup-structures/issues"
+  },
+  "homepage": "https://github.com/LupCode/node-lup-structures#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.9",
+    "jest": "^30.2.0",
+    "prettier": "^3.8.0",
+    "ts-jest": "^29.4.6",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^5.9.3"
+  }
+}
