@@ -1,3 +1,3 @@
 // TODO
 
-// export class DynamicBVH {}
+// export default class DynamicBVH {}

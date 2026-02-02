@@ -1,9 +1,8 @@
-export * from "./DynamicBVH";
-export * from "./ExpireMap";
-export * from "./HashMap";
-export * from "./Interfaces";
-export * from "./LooseOctree";
-export * from "./MultiSortedMap";
-export * from "./ObjectDoubleLinkedList";
-export * from "./ObjectLinkedList";
-export * from "./SortedMap";
+export * as DoubleLinkedList from './DoubleLinkedList';
+export * as DynamicBVH from './DynamicBVH';
+export * as ExpireMap from './ExpireMap';
+export * as HashMap from './HashMap';
+export * as LinkedList from './LinkedList';
+export * as LooseOctree from './LooseOctree';
+export * as MultiSortedMap from './MultiSortedMap';
+export * as SortedMap from './SortedMap';

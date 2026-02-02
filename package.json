@@ -1,6 +1,6 @@
 {
   "name": "lup-structures",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "NPM Node package providing more data structures in TypeScript.",
   "main": "./lib/index",
   "types": "./lib/index.d.ts",
