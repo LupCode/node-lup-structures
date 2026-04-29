@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import DoubleLinkedList from '../DoubleLinkedList';
 
 const EQUALS = (a: number, b: number) => a - (a % 3) === b - (b % 3);

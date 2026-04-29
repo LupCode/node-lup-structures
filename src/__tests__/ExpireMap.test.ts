@@ -1,3 +1,4 @@
+/// <reference types="jest" />
 import ExpireMap from '../ExpireMap';
 
 async function sleep(ms: number) {
